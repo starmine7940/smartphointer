@@ -19,7 +19,27 @@ export const useDeviceOrientation = (): UseDeviceOrientation => {
   }
 
   useEffect(() => {
-    window.addEventListener('deviceorientation', handleOrientation)
+    const requestPermission = async () => {
+      // 型キャストを使用してDeviceOrientationEvent.requestPermissionにアクセス
+      const deviceOrientationEvent = window.DeviceOrientationEvent as any
+
+      if (deviceOrientationEvent && typeof deviceOrientationEvent.requestPermission === 'function') {
+        try {
+          const permissionState = await deviceOrientationEvent.requestPermission()
+          if (permissionState === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation)
+          }
+        } catch (error) {
+          console.error('Device orientation permission denied:', error)
+        }
+      } else {
+        // AndroidやiOS 13未満のデバイスではそのままイベントリスナーを追加
+        window.addEventListener('deviceorientation', handleOrientation)
+      }
+    }
+
+    requestPermission()
+
     return () => {
       window.removeEventListener('deviceorientation', handleOrientation)
     }
