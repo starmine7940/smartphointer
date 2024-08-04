@@ -12,9 +12,9 @@ export const useDeviceMotion = (): UseDeviceMotion => {
 
   const handleDeviceMotion = (event: DeviceMotionEvent) => {
     setDeviceMotion({
-      x: event.acceleration?.x || 0,
-      y: event.acceleration?.y || 0,
-      z: event.acceleration?.z || 0,
+      x: event.acceleration?.x ?? 0,
+      y: event.acceleration?.y ?? 0,
+      z: event.acceleration?.z ?? 0,
     })
   }
 
