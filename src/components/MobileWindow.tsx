@@ -21,7 +21,7 @@ export const MobileWindow: FC = () => {
         z={z}
       />
       <Button
-        onClick={() => {window.addEventListener('devicemotion', handleDeviceMotion)}}
+        onClick={() => {window.addEventListener('devicemotion', handleDeviceMotion, true)}}
       >
         devicemotion をイベントリスナーに追加
       </Button>
