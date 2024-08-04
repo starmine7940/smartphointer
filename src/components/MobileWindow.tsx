@@ -3,13 +3,14 @@ import { createUseStyles } from 'react-jss';
 import { PointerArea } from './PointerArea';
 import { InformationArea } from './InformationArea';
 import { useDeviceMotion } from '../hooks/useDeviceMotion';
+import { Button } from 'semantic-ui-react';
 
 const useStyles = createUseStyles({})
 
 export const MobileWindow: FC = () => {
   const classes = useStyles()
 
-  const { x, y, z } = useDeviceMotion()
+  const { x, y, z, handleDeviceMotion } = useDeviceMotion()
 
   return (
     <>
@@ -19,6 +20,11 @@ export const MobileWindow: FC = () => {
         y={y}
         z={z}
       />
+      <Button
+        onClick={() => {window.addEventListener('devicemotion', handleDeviceMotion)}}
+      >
+        devicemotion をイベントリスナーに追加
+      </Button>
     </>
   )
 }

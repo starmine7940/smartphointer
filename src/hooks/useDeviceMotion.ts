@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { DeviceMotion } from "../domain/type";
 
-export type UseDeviceMotion = DeviceMotion
+export type UseDeviceMotion = DeviceMotion & {
+  handleDeviceMotion: (event: DeviceMotionEvent) => void
+}
 
 export const useDeviceMotion = (): UseDeviceMotion => {
   const [deviceMotion, setDeviceMotion] = useState({
@@ -18,22 +20,23 @@ export const useDeviceMotion = (): UseDeviceMotion => {
     })
   }
 
-  const requestPermission = async () => {
-    try {
-      // 許可を取得せず devicemotion をイベントリスナーに追加している
-      window.addEventListener('devicemotion', handleDeviceMotion)
-    } catch (error) {
-      console.error('Device motion permission denied:', error)
-    }
-  }
+  // const requestPermission = async () => {
+  //   try {
+  //     // 許可を取得せず devicemotion をイベントリスナーに追加している
+  //     window.addEventListener('devicemotion', handleDeviceMotion)
+  //   } catch (error) {
+  //     console.error('Device motion permission denied:', error)
+  //   }
+  // }
 
-  useEffect(() => {
-    requestPermission()
-  }, [])
+  // useEffect(() => {
+  //   requestPermission()
+  // }, [])
 
   return {
     x: deviceMotion.x,
     y: deviceMotion.y,
     z: deviceMotion.z,
+    handleDeviceMotion: handleDeviceMotion,
   }
 }
