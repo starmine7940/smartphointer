@@ -1,19 +1,19 @@
 import { FC } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Orientation } from '../domain/type';
+import { DeviceMotion } from '../domain/type';
 import { List, ListItem } from 'semantic-ui-react';
 
 const useStyles = createUseStyles({})
 
-type InformationAreaProps = Orientation
+type InformationAreaProps = DeviceMotion
 
-export const InformationArea: FC<InformationAreaProps> = ({alpha, beta, gamma }) => {
+export const InformationArea: FC<InformationAreaProps> = ({x, y, z }) => {
   const classes = useStyles()
   return (
     <List bulleted>
-      <ListItem>alpha: {alpha}</ListItem>
-      <ListItem>beta: {beta}</ListItem>
-      <ListItem>gamma: {gamma}</ListItem>
+      <ListItem>x: {x}</ListItem>
+      <ListItem>y: {y}</ListItem>
+      <ListItem>z: {z}</ListItem>
   </List>
   )
 }

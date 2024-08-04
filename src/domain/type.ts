@@ -1,5 +1,5 @@
-export type Orientation = {
-  alpha: number,
-  beta: number,
-  gamma: number,
+export type DeviceMotion = {
+  x: number,
+  y: number,
+  z: number,
 }

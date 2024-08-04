@@ -2,22 +2,22 @@ import { FC } from 'react';
 import { createUseStyles } from 'react-jss';
 import { PointerArea } from './PointerArea';
 import { InformationArea } from './InformationArea';
-import { useDeviceOrientation } from '../hooks/useDeviceOrientation';
+import { useDeviceMotion } from '../hooks/useDeviceMotion';
 
 const useStyles = createUseStyles({})
 
 export const MobileWindow: FC = () => {
   const classes = useStyles()
 
-  const { alpha, beta, gamma } = useDeviceOrientation()
+  const { x, y, z } = useDeviceMotion()
 
   return (
     <>
       <PointerArea />
       <InformationArea
-        alpha={alpha}
-        beta={beta}
-        gamma={gamma}
+        x={x}
+        y={y}
+        z={z}
       />
     </>
   )
