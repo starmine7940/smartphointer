@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DeviceMotion } from "../domain/type";
 
 export type UseDeviceMotion = DeviceMotion & {
@@ -50,10 +50,6 @@ export const useDeviceMotion = (): UseDeviceMotion => {
       })
     }
   }
-  
-  useEffect(() => {
-    handleRequestDeviceMotionPermission()
-  },[])
   
   return {
     x: deviceMotion.x,
