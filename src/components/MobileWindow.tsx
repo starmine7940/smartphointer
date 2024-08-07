@@ -4,6 +4,7 @@ import { PointerArea } from './PointerArea';
 import { InformationArea } from './InformationArea';
 import { useDeviceMotion } from '../hooks/useDeviceMotion';
 import { Button } from 'semantic-ui-react';
+import { useRoundedDeviceMotionData } from '../hooks/useRoundedDeviceMotionData';
 
 const useStyles = createUseStyles({})
 
@@ -11,12 +12,24 @@ export const MobileWindow: FC = () => {
   const classes = useStyles()
 
   const {
+    acceleration: originalAcceleration,
+    accelerationIncludingGravity: originalAccelerationIncludingGravity,
+    rotationRate: originalRotationRate,
+    interval: originalInterval,
+    handleRequestDeviceMotionPermission,
+  } = useDeviceMotion()
+
+  const {
     acceleration,
     accelerationIncludingGravity,
     rotationRate,
     interval,
-    handleRequestDeviceMotionPermission,
-  } = useDeviceMotion()
+  } = useRoundedDeviceMotionData({
+    acceleration: originalAcceleration,
+    accelerationIncludingGravity: originalAccelerationIncludingGravity,
+    rotationRate: originalRotationRate,
+    interval: originalInterval,
+  })
 
   return (
     <>
