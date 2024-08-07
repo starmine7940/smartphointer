@@ -1,19 +1,59 @@
 import { FC } from 'react';
 import { createUseStyles } from 'react-jss';
-import { DeviceMotion } from '../domain/type';
-import { List, ListItem } from 'semantic-ui-react';
+import { List, ListItem, ListList } from 'semantic-ui-react';
 
 const useStyles = createUseStyles({})
 
-type InformationAreaProps = DeviceMotion
+type InformationAreaProps = DeviceMotionData
 
-export const InformationArea: FC<InformationAreaProps> = ({x, y, z }) => {
+export const InformationArea: FC<InformationAreaProps> = ({
+  acceleration,
+  accelerationIncludingGravity,
+  rotationRate,
+  interval,
+}) => {
   const classes = useStyles()
   return (
     <List bulleted>
-      <ListItem>x: {x}</ListItem>
-      <ListItem>y: {y}</ListItem>
-      <ListItem>z: {z}</ListItem>
-  </List>
+      <ListItem>
+        acceleration
+        <ListList>
+          x: {acceleration?.x}
+        </ListList>
+        <ListList>
+          y: {acceleration?.y}
+        </ListList>
+        <ListList>
+          z: {acceleration?.z}
+        </ListList>
+      </ListItem>
+      <ListItem>
+        accelerationIncludingGravity
+        <ListList>
+          x: {accelerationIncludingGravity?.x}
+        </ListList>
+        <ListList>
+          y: {accelerationIncludingGravity?.y}
+        </ListList>
+        <ListList>
+          z: {accelerationIncludingGravity?.z}
+        </ListList>
+      </ListItem>
+      <ListItem>
+        rotationRate
+        <ListList>
+          alpha: {rotationRate?.alpha}
+        </ListList>
+        <ListList>
+          beta: {rotationRate?.beta}
+        </ListList>
+        <ListList>
+          gamma: {rotationRate?.gamma}
+        </ListList>
+      </ListItem>
+      <ListItem>
+        interval: {interval}
+      </ListItem>
+    </List>
   )
 }

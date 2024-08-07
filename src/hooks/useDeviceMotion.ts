@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { DeviceMotion } from "../domain/type";
 
-export type UseDeviceMotion = DeviceMotion & {
+export type UseDeviceMotion = DeviceMotionData & {
   handleRequestDeviceMotionPermission: () => void
 }
 
 export const useDeviceMotion = (): UseDeviceMotion => {
-  const [deviceMotion, setDeviceMotion] = useState({
-    x: 0,
-    y: 0,
-    z: 0,
+  const [deviceMotion, setDeviceMotion] = useState<DeviceMotionData>({
+    acceleration: null,
+    accelerationIncludingGravity: null,
+    rotationRate: null,
+    interval: 0,
   })
 
   const handleDeviceMotion = (event: DeviceMotionEvent) => {
     setDeviceMotion({
-      x: event.acceleration?.x ?? 0,
-      y: event.acceleration?.y ?? 0,
-      z: event.acceleration?.z ?? 0,
+      acceleration: event.acceleration,
+      accelerationIncludingGravity: event.accelerationIncludingGravity,
+      rotationRate: event.rotationRate,
+      interval: event.interval,
     })
   }
 
@@ -52,9 +53,10 @@ export const useDeviceMotion = (): UseDeviceMotion => {
   }
   
   return {
-    x: deviceMotion.x,
-    y: deviceMotion.y,
-    z: deviceMotion.z,
+    acceleration: deviceMotion.acceleration,
+    accelerationIncludingGravity: deviceMotion.accelerationIncludingGravity,
+    rotationRate: deviceMotion.rotationRate,
+    interval: deviceMotion.interval,
     handleRequestDeviceMotionPermission: handleRequestDeviceMotionPermission,
   }
 }

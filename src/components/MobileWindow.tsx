@@ -10,20 +10,27 @@ const useStyles = createUseStyles({})
 export const MobileWindow: FC = () => {
   const classes = useStyles()
 
-  const { x, y, z, handleRequestDeviceMotionPermission } = useDeviceMotion()
+  const {
+    acceleration,
+    accelerationIncludingGravity,
+    rotationRate,
+    interval,
+    handleRequestDeviceMotionPermission,
+  } = useDeviceMotion()
 
   return (
     <>
       <PointerArea />
       <InformationArea
-        x={x}
-        y={y}
-        z={z}
+        acceleration={acceleration}
+        accelerationIncludingGravity={accelerationIncludingGravity}
+        rotationRate={rotationRate}
+        interval={interval}
       />
       <Button
         onClick={handleRequestDeviceMotionPermission}
       >
-        devicemotion をイベントリスナーに追加
+        DeviceMotionEvent.requestPermission()
       </Button>
     </>
   )
