@@ -10,8 +10,8 @@ export const useRoundedDeviceMotionData = ({
     if (data === null || data === undefined) {
       return 0
     }
-    // 小数第三位で四捨五入
-    return Math.round(data * 100) / 100
+    // 小数第一位で四捨五入
+    return Math.round(data)
   }
 
   return {
