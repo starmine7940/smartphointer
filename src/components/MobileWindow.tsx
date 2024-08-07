@@ -10,7 +10,7 @@ const useStyles = createUseStyles({})
 export const MobileWindow: FC = () => {
   const classes = useStyles()
 
-  const { x, y, z, handleDeviceMotion } = useDeviceMotion()
+  const { x, y, z, handleRequestDeviceMotionPermission } = useDeviceMotion()
 
   return (
     <>
@@ -21,7 +21,7 @@ export const MobileWindow: FC = () => {
         z={z}
       />
       <Button
-        onClick={() => {window.addEventListener('devicemotion', handleDeviceMotion, true)}}
+        onClick={handleRequestDeviceMotionPermission}
       >
         devicemotion をイベントリスナーに追加
       </Button>
