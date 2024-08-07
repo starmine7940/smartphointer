@@ -51,6 +51,10 @@ export const useDeviceMotion = (): UseDeviceMotion => {
     }
   }
   
+  useEffect(() => {
+    handleRequestDeviceMotionPermission()
+  },[])
+  
   return {
     x: deviceMotion.x,
     y: deviceMotion.y,
