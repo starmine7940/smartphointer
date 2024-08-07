@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/smartphointer/static/js/main.f5d8be94.js",
+    "main.js": "/smartphointer/static/js/main.66babf15.js",
     "index.html": "/smartphointer/index.html",
-    "main.f5d8be94.js.map": "/smartphointer/static/js/main.f5d8be94.js.map"
+    "main.66babf15.js.map": "/smartphointer/static/js/main.66babf15.js.map"
   },
   "entrypoints": [
-    "static/js/main.f5d8be94.js"
+    "static/js/main.66babf15.js"
   ]
 }
